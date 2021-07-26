@@ -1,0 +1,17 @@
+<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<aside class="sidebar">
+  <nav role="navigation">
+    <ul>
+      <li>
+        <a href="/posts">Posts</a>
+      </li>
+      <li>
+        <a href="/post-types">Post Types</a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+<main role="main" class="main-content--app">
+  <%= @inner_content %>
+</main>

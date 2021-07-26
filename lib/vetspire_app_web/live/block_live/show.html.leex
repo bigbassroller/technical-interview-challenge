@@ -1,0 +1,35 @@
+<h1>Show Block</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, VetspireAppWeb.BlockLive.FormComponent,
+    id: @block.id,
+    title: @page_title,
+    action: @live_action,
+    block: @block,
+    return_to: Routes.block_show_path(@socket, :show, @block) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @block.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @block.description %>
+  </li>
+
+  <li>
+    <img src="<%= @block.image %>" alt="">
+  </li>
+
+  <li>
+    <strong>Block Type:</strong>
+    <%= @block.block_type.name %>
+  </li>
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.block_show_path(@socket, :edit, @block), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.block_index_path(@socket, :index) %></span>

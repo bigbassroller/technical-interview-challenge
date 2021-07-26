@@ -1,0 +1,35 @@
+<h1>Listing Block Types</h1>
+<span><%= live_patch "New Block type", to: Routes.block_type_index_path(@socket, :new) %></span>
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, VetspireAppWeb.BlockTypeLive.FormComponent,
+    id: @block_type.id || :new,
+    title: @page_title,
+    action: @live_action,
+    block_type: @block_type,
+    return_to: Routes.block_type_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="block_types">
+    <%= for block_type <- @block_types do %>
+      <tr id="block_type-<%= block_type.id %>">
+        <td><%= block_type.name %></td>
+        <td><%= block_type.description %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.block_type_show_path(@socket, :show, block_type) %></span>
+          <span><%= live_patch "Edit", to: Routes.block_type_index_path(@socket, :edit, block_type) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: block_type.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

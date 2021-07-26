@@ -1,0 +1,33 @@
+<p class="alert alert-info" role="alert"
+  phx-click="lv:clear-flash"
+  phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+
+<p class="alert alert-danger" role="alert"
+  phx-click="lv:clear-flash"
+  phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+<div class="wrapper">
+  <header class="site-header">
+    <nav role="navigation">
+      <ul>
+        <li>
+          <a href="/" class="phx-logo float-left">Vetspire App</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <aside class="sidebar">
+    <nav role="navigation">
+      <ul>
+        <li>
+          <a href="/blocks">Blocks</a>
+        </li>
+        <li>
+          <a href="block-types">Block Types</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main role="main" class="main-content main-content--live">
+  <%= @inner_content %>
+  </main>
+</div>
